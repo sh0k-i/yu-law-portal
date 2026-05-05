@@ -143,7 +143,7 @@ const StatsC = ({ collapsed, setCollapsed }) => (
     {/* Narrative-style — designed for non-technical paralegal */}
     <div className="card" style={{ marginBottom: 16, background: "var(--paper-2)" }}>
       <div style={{ fontFamily: "Caveat, cursive", fontSize: 28, lineHeight: 1.2, maxWidth: 720 }}>
-        Last week, <span className="squiggle">2,184 people</span> visited yulawfirm.com.<br/>
+        Last week, <span className="squiggle">2,184 people</span> visited attorneyyu.com.<br/>
         Of those, <span className="squiggle">38 reached out</span> through the contact form — that's the most you've had in any week this year.
       </div>
       <div style={{ marginTop: 18, display: "flex", gap: 24, fontSize: 13, color: "var(--ink-3)" }}>

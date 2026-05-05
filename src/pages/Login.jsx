@@ -48,7 +48,7 @@ const Login = () => {
           </div>
 
           <h2 className="f-hand" style={{ fontSize: 32, margin: '0 0 6px' }}>Welcome back</h2>
-          <p style={{ color: 'var(--ink-3)', fontSize: 14, margin: '0 0 28px' }}>Sign in to manage yulawfirm.com</p>
+          <p style={{ color: 'var(--ink-3)', fontSize: 14, margin: '0 0 28px' }}>Sign in to manage attorneyyu.com</p>
 
           <div className="field">
             <label htmlFor="email">Email</label>
@@ -57,7 +57,7 @@ const Login = () => {
               type="email"
               autoComplete="email"
               className="input"
-              placeholder="name@yulawfirm.com"
+              placeholder="name@attorneyyu.com"
               {...register('email', { required: 'Email is required' })}
             />
             {errors.email && <span style={{ color: 'var(--warn)', fontSize: 12 }}>{errors.email.message}</span>}
@@ -121,7 +121,7 @@ const Login = () => {
         <div style={{ fontFamily: 'Caveat, cursive', fontSize: 18, color: 'var(--ink-3)' }}>"the portal"</div>
         <div>
           <div className="f-hand" style={{ fontSize: 44, lineHeight: 1.15, maxWidth: 380 }}>
-            Edit yulawfirm.com<br />without waiting on<br />a developer.
+            Edit attorneyyu.com<br />without waiting on<br />a developer.
           </div>
           <div style={{ marginTop: 32, color: 'var(--ink-3)', fontSize: 14, maxWidth: 360, lineHeight: 1.5 }}>
             Manage testimonials, team, settlements, FAQs, and watch traffic — all from one place.
