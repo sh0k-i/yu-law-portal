@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Yu Law Portal — Wireframes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Kalam:wght@300;400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <style>
+    body, html { margin: 0; padding: 0; background: #f0eee9; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="shared.jsx"></script>
+  <script type="text/babel" src="screens-login.jsx"></script>
+  <script type="text/babel" src="screens-dashboard.jsx"></script>
+  <script type="text/babel" src="screens-copy.jsx"></script>
+  <script type="text/babel" src="screens-team.jsx"></script>
+  <script type="text/babel" src="screens-content.jsx"></script>
+  <script type="text/babel" src="screens-testimonials.jsx"></script>
+  <script type="text/babel" src="screens-design-media.jsx"></script>
+  <script type="text/babel" src="screens-stats.jsx"></script>
+
+  <script type="text/babel">
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "darkMode": false,
+      "sidebarCollapsed": false
+    }/*EDITMODE-END*/;
+
+    const W = 1440, H = 900;
+
+    function App() {
+      const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+      React.useEffect(() => {
+        document.documentElement.setAttribute("data-theme", tweaks.darkMode ? "dark" : "light");
+      }, [tweaks.darkMode]);
+
+      const collapsed = tweaks.sidebarCollapsed;
+      const sp = { collapsed };
+
+      return (
+        <>
+          <DesignCanvas>
+            <DCSection id="login" title="① Login" subtitle="Two takes on the sign-in screen">
+              <DCArtboard id="login-a" label="A · Split with marketing rail" width={W} height={H}><LoginA/></DCArtboard>
+              <DCArtboard id="login-b" label="B · Centered card" width={W} height={H}><LoginB/></DCArtboard>
+            </DCSection>
+
+            <DCSection id="dashboard" title="② Dashboard" subtitle="Overview home — KPIs, traffic, quick actions, recent activity">
+              <DCArtboard id="dash-a" label="Stats grid + activity + top pages" width={W} height={H}><DashA {...sp}/></DCArtboard>
+            </DCSection>
+
+            <DCSection id="copy" title="③ Pages & Copy" subtitle="Page navigator + form (no live preview, per spec)">
+              <DCArtboard id="copy-b" label="Page navigator + form" width={W} height={H}><CopyB {...sp}/></DCArtboard>
+            </DCSection>
+
+            <DCSection id="team" title="④ Team" subtitle="13-member directory — attorneys, paralegals, staff, and Bear 🐕">
+              <DCArtboard id="team-a" label="Card grid (photos prominent)" width={W} height={H}><TeamA {...sp}/></DCArtboard>
+            </DCSection>
+
+            <DCSection id="areas" title="⑤ Practice Areas" subtitle="Card grid — these are sections on the homepage, not standalone pages">
+              <DCArtboard id="areas-a" label="Editable card grid" width={W} height={H}><AreasA {...sp}/></DCArtboard>
+            </DCSection>
+
+            <DCSection id="settle" title="⑥ Settlements" subtitle="The wins marquee — case type, amount, description">
+              <DCArtboard id="settle-a" label="Settlements table" width={W} height={H}><SettlementsA {...sp}/></DCArtboard>
+            </DCSection>
+
+            <DCSection id="test" title="⑦ Testimonials" subtitle="Reviews grid with edit modal preview (no pending state)">
+              <DCArtboard id="test-a" label="Card grid + edit modal" width={W} height={H}><TestimonialsA {...sp}/></DCArtboard>
+            </DCSection>
+
+            <DCSection id="faqs" title="⑧ FAQs" subtitle='"Your Questions Answered" section copy'>
+              <DCArtboard id="faqs-a" label="FAQ list" width={W} height={H}><FaqsA {...sp}/></DCArtboard>
+            </DCSection>
+
+            <DCSection id="orgs" title="⑨ Organizations" subtitle='"Trusted by Leading Organizations" partner marquee'>
+              <DCArtboard id="orgs-a" label="Organizations table" width={W} height={H}><OrgsA {...sp}/></DCArtboard>
+            </DCSection>
+
+            <DCSection id="design" title="⑩ Design & Brand" subtitle="Brand colors (Yu Law red/cream/black), section visibility, typography">
+              <DCArtboard id="design-a" label="Two-column controls" width={W} height={H}><DesignA {...sp}/></DCArtboard>
+            </DCSection>
+
+            <DCSection id="media" title="⑪ Media Library" subtitle="Photos, logos, docs (Supabase Storage)">
+              <DCArtboard id="media-a" label="Grid with dropzone" width={W} height={H}><MediaA {...sp}/></DCArtboard>
+            </DCSection>
+
+            <DCSection id="stats" title="⑫ Analytics (PostHog)" subtitle="Three angles — overview, funnel, plain-English summary">
+              <DCArtboard id="stats-a" label="A · Overview KPIs + sources" width={W} height={H}><StatsA {...sp}/></DCArtboard>
+              <DCArtboard id="stats-b" label="B · Funnel-first" width={W} height={H}><StatsB {...sp}/></DCArtboard>
+              <DCArtboard id="stats-c" label="C · Plain-English summary" width={W} height={H}><StatsC {...sp}/></DCArtboard>
+            </DCSection>
+          </DesignCanvas>
+
+          <TweaksPanel title="Tweaks">
+            <TweakSection title="Theme">
+              <TweakToggle label="Dark mode" value={tweaks.darkMode} onChange={v => setTweak("darkMode", v)}/>
+            </TweakSection>
+            <TweakSection title="Sidebar">
+              <TweakToggle label="Collapsed (icons only)" value={tweaks.sidebarCollapsed} onChange={v => setTweak("sidebarCollapsed", v)}/>
+            </TweakSection>
+            <TweakSection title="About these wireframes">
+              <div style={{ fontSize: 12, color: "rgba(255,255,255,0.7)", lineHeight: 1.5 }}>
+                Marker-sketch fidelity. Drag artboards by their grip to reorder, click to focus full-screen. ↑/↓ between sections, ←/→ within.
+              </div>
+            </TweakSection>
+          </TweaksPanel>
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+  </script>
+</body>
+</html>
